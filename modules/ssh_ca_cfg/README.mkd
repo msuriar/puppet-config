@@ -8,7 +8,7 @@ target machine with a cert signed by the `suriar.net` SSH CA.
 
     root@newhost# aptitude install git puppet
     root@newhost# git clone https://github.com/msuriar/puppet-config
-    root@newhost# puppet apply --modulepath = ./puppet-config/modules \
+    root@newhost# puppet apply --modulepath=./puppet-config/modules \
       <(echo 'include ssh_ca_cfg')
 
     muz@existinghost$ ssh newhost.suriar.net -i <signed_ssh_cert>
