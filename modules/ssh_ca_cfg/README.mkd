@@ -1,0 +1,50 @@
+# SSH CA configuration for suriar.net
+
+## OVERVIEW
+This module installs the bare minimum configuration to enable remote login to a
+target machine with a cert signed by the `suriar.net` SSH CA.
+
+## USAGE
+
+    root@newhost# aptitude install git puppet
+    root@newhost# git clone https://github.com/msuriar/puppet-config
+    root@newhost# puppet apply --modulepath = ./puppet-config/modules \
+      <('include ssh_ca_cfg')
+
+    muz@existinghost$ ssh newhost.suriar.net -l newhost -i <signed_ssh_cert>
+
+NOTE: assuming `newhost` is a brand new machine, `muz@existinghost` will still be
+prompted to validate `newhost`'s host key. Longer term, the plan is to have
+either the machine install process or this initial bootstrap generate CSRs for
+all the hosts SSH host keys with the CA.
+
+## DETAILS
+
+This is pretty verbose for a bootstrap. Details of what's being done along
+with some thoughts/justification follow.
+
+### SET UP NON-ROOT USER
+
+- Install `sudo`.
+- Override `/etc/sudoers`:
+  - Sets members of `%sudo` to not require a password when running commands.
+- Create non-root user `muz`:
+  - Ensure it has no password.
+  - Ensure it's a member of the `sudo` group.
+  - Ensure that `sudo` is installed (otherwise the `sudo` group won't have been
+    created.
+
+Since we're accepting certs signed by a CA for login, there's no reason to
+assume that the remote user has any idea what the local password is. Therefore,
+configure `sudo` to not require a password, and ensure that there is no local
+password configured for this account.
+
+### SSH CONFIGURATION
+
+- Install SSH(!)
+- Copy the suriar.net SSH CA public key to `/etc/ssh/ca.suriar.net.pub`.
+- Override `/etc/ssh/sshd_config`:
+  - Disable `root` logins.
+  - Instructs `sshd` to accept certs signed by `ca.suriar.net.pub`.
+  - Instructs `sshd` to offer signed versions of its host keys, if they exist.
+  - Instructs `puppet` to reload `sshd`'s configuration if this file changes.
