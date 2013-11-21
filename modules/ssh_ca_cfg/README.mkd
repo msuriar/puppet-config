@@ -16,7 +16,7 @@ target machine with a cert signed by the `suriar.net` SSH CA.
 NOTE: assuming `newhost` is a brand new machine, `muz@existinghost` will still be
 prompted to validate `newhost`'s host key. Longer term, the plan is to have
 either the machine install process or this initial bootstrap generate CSRs for
-all the hosts SSH host keys with the CA.
+all of `newhost`'s SSH host keys with the CA.
 
 ## DETAILS
 
