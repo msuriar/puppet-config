@@ -11,7 +11,7 @@ target machine with a cert signed by the `suriar.net` SSH CA.
     root@newhost# puppet apply --modulepath = ./puppet-config/modules \
       <(echo 'include ssh_ca_cfg')
 
-    muz@existinghost$ ssh newhost.suriar.net -l newhost -i <signed_ssh_cert>
+    muz@existinghost$ ssh newhost.suriar.net -i <signed_ssh_cert>
 
 NOTE: assuming `newhost` is a brand new machine, `muz@existinghost` will still be
 prompted to validate `newhost`'s host key. Longer term, the plan is to have
