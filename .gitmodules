@@ -1,0 +1,3 @@
+[submodule "modules/dotfiles/files"]
+	path = modules/dotfiles/files
+	url = github:msuriar/dotfiles
