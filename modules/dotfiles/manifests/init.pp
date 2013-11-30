@@ -6,11 +6,6 @@ class dotfiles {
     mode  => 0644,
   }
 
-  user { 'muz':
-    ensure     => present,
-    managehome => true,
-  }
-
   file { '/home/muz/.dotfiles':
     ensure  => directory,
     recurse => true,
