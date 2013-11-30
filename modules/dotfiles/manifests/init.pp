@@ -10,7 +10,6 @@ class dotfiles {
     ensure  => directory,
     recurse => true,
     source  => "puppet:///modules/dotfiles",
-    require => User['muz'],
   }
 
 }
