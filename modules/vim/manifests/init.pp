@@ -20,7 +20,7 @@ class vim {
 
     file {'/home/muz/.vimrc':
       ensure => link,
-      target => '.dotfiles/vimrc',
+      target => '.dotfiles/vim/vimrc',
     }
   }
 }
