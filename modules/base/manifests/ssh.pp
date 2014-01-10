@@ -1,5 +1,4 @@
-class ssh_ca_cfg  {
-
+class base::ssh  {
 
   package { 'ssh':
     ensure => installed,
@@ -7,8 +6,8 @@ class ssh_ca_cfg  {
 
   file { '/etc/ssh/sshd_config':
     ensure  => file,
-    require => [ Package['ssh'], User['muz'] ],
-    source  => "puppet:///modules/ssh_ca_cfg/sshd_config",
+    require => Package['ssh'],
+    source  => "puppet:///sshd_config",
     notify  => Service['ssh'],
   }
 
@@ -17,6 +16,7 @@ class ssh_ca_cfg  {
   file { '/etc/ssh/ca.suriar.net.pub':
     ensure  => file,
     require => Package['ssh'],
-    source  => "puppet:///modules/ssh_ca_cfg/ca.suriar.net.pub",
+    source  => "puppet:///ca.suriar.net.pub",
   }
+
 }
