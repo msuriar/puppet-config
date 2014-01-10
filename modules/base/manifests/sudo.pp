@@ -1,4 +1,4 @@
-class base::sudo {
+class base::sudo inherits base::users {
 
   $user = 'muz'
   $cfg  = '/etc/sudoers'
