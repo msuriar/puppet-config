@@ -1,5 +1,11 @@
 class base::ssh  {
 
+  File {
+    group => 'root',
+    owner => 'root',
+    mode  => '0600',
+  }
+
   package { 'ssh':
     ensure => installed,
   }
