@@ -6,11 +6,9 @@ node base {
     group => $user,
     owner => $user,
     mode  => '0644',
-    audit => all,
   }
 
   Package {
     ensure => latest,
-    audit  => all,
   }
 }
