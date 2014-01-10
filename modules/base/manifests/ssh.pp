@@ -7,7 +7,7 @@ class base::ssh  {
   file { '/etc/ssh/sshd_config':
     ensure  => file,
     require => Package['ssh'],
-    source  => "puppet:///sshd_config",
+    source  => "puppet:///modules/base/sshd_config",
     notify  => Service['ssh'],
   }
 
@@ -16,7 +16,7 @@ class base::ssh  {
   file { '/etc/ssh/ca.suriar.net.pub':
     ensure  => file,
     require => Package['ssh'],
-    source  => "puppet:///ca.suriar.net.pub",
+    source  => "puppet:///modules/base/ca.suriar.net.pub",
   }
 
 }

@@ -10,7 +10,7 @@ class base::sudo {
     group   => 'root',
     ensure  => file,
     require => Package['sudo'],
-    source  => "puppet:///sudoers",
+    source  => "puppet:///modules/base/sudoers",
     mode    => 0440,
   }
 
