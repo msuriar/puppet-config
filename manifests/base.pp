@@ -11,4 +11,7 @@ node base {
   Package {
     ensure => latest,
   }
+
+  include base::ssh
+  include base::sudo
 }
