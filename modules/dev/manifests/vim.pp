@@ -1,11 +1,11 @@
-class vim {
-  include vim::config
+class dev::vim {
+  include dev::vim::config
 
   package {'vim':
     ensure => latest,
   }
 
-  class vim::config {
+  class dev::vim::config {
     include dotfiles
     File {
       owner => 'muz',

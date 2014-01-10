@@ -1,11 +1,11 @@
-class git {
-  include git::config
+class dev::git {
+  include dev::git::config
 
   package {'git':
     ensure => latest,
   }
 
-  class git::config {
+  class dev::git::config {
     include dotfiles
     File {
       owner => 'muz',

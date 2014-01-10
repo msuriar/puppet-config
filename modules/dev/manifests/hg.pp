@@ -1,11 +1,11 @@
-class i3 {
-  include i3::config
+class dev::hg {
+  include dev::hg::config
 
-  package {'i3':
+  package {'mercurial':
     ensure => latest,
   }
 
-  class i3::config {
+  class dev::hg::config {
     include dotfiles
     File {
       owner => 'muz',
@@ -13,9 +13,9 @@ class i3 {
       mode  => 0644,
     }
 
-    file {'/home/muz/.i3':
+    file {'/home/muz/.hgrc':
       ensure => link,
-      target => '.dotfiles/i3',
+      target => '.dotfiles/hg/hgrc',
     }
   }
 }

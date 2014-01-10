@@ -1,11 +1,11 @@
-class tmux {
-  include tmux::config
+class dev::tmux {
+  include dev::tmux::config
 
   package {'tmux':
     ensure => latest,
   }
 
-  class tmux::config {
+  class dev::tmux::config {
     include dotfiles
     File {
       owner => 'muz',
