@@ -1,11 +1,11 @@
-class zsh {
-  include zsh::config
+class base::zsh {
+  include base::zsh::config
 
   package {'zsh':
     ensure => latest,
   }
 
-  class zsh::config {
+  class base::zsh::config {
     include dotfiles
     File {
       owner => 'muz',
