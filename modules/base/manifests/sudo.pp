@@ -3,7 +3,7 @@ class base::sudo {
   $user = 'muz'
   $cfg  = '/etc/sudoers'
 
-  package { 'sudo' }
+  package { 'sudo': }
 
   file { $cfg:
     owner   => 'root',
