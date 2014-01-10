@@ -13,5 +13,4 @@ node base {
   }
 
   include base::ssh
-  include base::sudo
 }

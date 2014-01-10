@@ -21,3 +21,9 @@ class base::sudo inherits base::users {
   }
 
 }
+
+class base::sudo::dev inherits base::sudo {
+  File[$cfg] {
+    source => undef,
+  }
+}
