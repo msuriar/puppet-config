@@ -1,12 +1,12 @@
-class base::zsh {
+class dev::zsh {
 
-  include base::zsh::config
+  include dev::zsh::config
 
   package {'zsh':
     ensure => latest,
   }
 
-  class base::zsh::config {
+  class dev::zsh::config {
     $user = 'muz'
     include dotfiles
     File {

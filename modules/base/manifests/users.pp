@@ -13,7 +13,7 @@ class base::users {
 }
 
 class base::users::dev inherits base::users {
-  require base::zsh
+  require dev::zsh
 
   User[$user] {
        shell => '/bin/zsh',
