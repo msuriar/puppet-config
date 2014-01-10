@@ -1,4 +1,5 @@
 class base::zsh {
+
   include base::zsh::config
 
   package {'zsh':
@@ -6,28 +7,29 @@ class base::zsh {
   }
 
   class base::zsh::config {
+    $user = 'muz'
     include dotfiles
     File {
-      owner => 'muz',
-      group => 'muz',
+      owner => $user,
+      group => $user,
       mode  => 0644,
     }
 
-    user {'muz':
+    User[$user] {
       shell => '/bin/zsh',
     }
 
-    file {'/home/muz/.zshrc':
+    file {"/home/$user/.zshrc":
       ensure => link,
       target => '.dotfiles/zsh/zshrc',
     }
 
-    file {'/home/muz/.zshenv':
+    file {"/home/$user/.zshenv":
       ensure => link,
       target => '.dotfiles/zsh/zshenv',
     }
 
-    file {'/home/muz/.zprofile':
+    file {"/home/$user/.zprofile":
       ensure => link,
       target => '.dotfiles/zsh/zprofile',
     }
