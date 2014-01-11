@@ -8,11 +8,10 @@ class base::users {
     managehome => true,
     uid        => $id,
     gid        => $id,
-    password => '*',
   }
 }
 
-class base::users::dev inherits base::users {
+class base::users::desktop inherits base::users {
   require dev::zsh
 
   User[$user] {
@@ -20,9 +19,9 @@ class base::users::dev inherits base::users {
   }
 }
 
-class base::users::bastion inherits base::users::dev {
+class base::users::bastion inherits base::users::desktop {
   # Bastion = headless development machine.
   User[$user] {
-       password => undef,
+       password => '*',
   }
 }
